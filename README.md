@@ -1,4 +1,4 @@
-# WDI 10 ([General Assembly, Sydney](https://generalassemb.ly/sydney)) Homework Repository
+# WDI 12 ([General Assembly, Sydney](https://generalassemb.ly/sydney)) Homework Repository
 
 ## Setup Instructions
 
@@ -7,8 +7,8 @@
 - Clone your forked repository on your local computer
     + git clone url_of_your_fork_on_github
 - Add an upstream, so that your local copy's remote is pointing to my repository on Github (this repository)
-    + Move into the the repository (cd WDI10-Homework)
-    + git remote add upstream https://github.com/avenoir/WDI10-Homework
+    + Move into the the repository (cd WDI12_Homework)
+    + git remote add upstream https://github.com/ga-wolf/WDI12_Homework
     + git pull upstream master
 
 ## To Add your Homework

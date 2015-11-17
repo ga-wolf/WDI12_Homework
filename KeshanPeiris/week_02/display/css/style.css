@@ -1,0 +1,14 @@
+
+.container { 
+  max-width: 960px;
+  margin: auto;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 300px;
+
+}

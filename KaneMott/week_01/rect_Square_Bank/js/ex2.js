@@ -27,7 +27,7 @@ var addAccount = function(name,sum){
 	account.sum = sum;
 		if (sum < 0){
 			account.sum = 0;
-			}
+		}
 
 	bank.push(account);
 }
@@ -71,7 +71,35 @@ var withdraw = function(name,sum){
 	} else { console.log("You don't seem to have an account with us, are you sure you spelled that correctly?") }
 };
 
+var deposit = function(name,sum){
+	var namefind = -1;
+	var newSum = null;
 
+		//Loop searches bank arrays until it finds a matching string to name
+
+		for (var i = 0; i < bank.length; i++) {
+			if (bank[i].name === name) {
+				namefind = i;
+			};
+		};
+
+		// If name found and sum withdrawn from array sum is above 0, update newSum, change in array.
+
+	if (namefind != -1){
+
+		if (bank[namefind].sum + sum >= 0){
+
+			newSum = bank[namefind].sum + sum;
+
+			console.log("New balance is "+newSum)
+
+			bank[namefind].sum = newSum;
+
+		} else {console.log("That overdraws you, leave before we get security.")}
+
+
+	} else { console.log("You don't seem to have an account with us, are you sure you spelled that correctly?") }
+};
 
 // Bonus
 

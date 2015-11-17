@@ -37,6 +37,19 @@ var isLeapYear = function(year){
 		return false;}
 }
 
+// Jack's condensed version
+
+// var isLeapYear = function(year){
+// 	if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
+// 			console.log(year + " ISLY");
+// 			return true;
+
+// 	} else {
+// 		console.log(year + " NLY") 
+// 		return false;}
+// }
+
+
 //Fails on 1900
 
 // var isLeapYear = function(year){
@@ -47,3 +60,11 @@ var isLeapYear = function(year){
 // 		console.log(year + " NLY") 
 // 		return false}
 // }
+
+// check:
+
+
+isLeapYear(1997);
+isLeapYear(1996);
+isLeapYear(1900);
+isLeapYear(2000);

@@ -1,0 +1,20 @@
+h1 {
+  text-align: center;
+  font-family: helvetica;
+  color: black;
+  font-size: 50px;
+  text-shadow: 0 0 10px red;
+}
+body{
+  background-color: #B2FFD6;
+}
+p{
+  color: purple;
+  margin-left: 10px ;
+
+}
+p.vital {
+  font-size: 150%;
+  color: blue  ;
+
+}

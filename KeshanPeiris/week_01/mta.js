@@ -43,51 +43,6 @@ var planTrip = function (startstation, endstation ){
   };
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // var planTrip = function (lineA, lineB) {
 //   for (var i = 0; i < lineN.length; i++) {
 //     var travel = lineN[i];

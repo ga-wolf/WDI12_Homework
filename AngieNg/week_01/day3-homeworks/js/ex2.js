@@ -75,7 +75,7 @@ var guessLetter = function(inputGuess) {
 	
 	var finalRewardAmount = rewardAmt.toFixed(2);	//Convert to 2 decimal
 	console.log("Your final reward amount is $" +finalRewardAmount+ '\n');
-	console.log("attemptNo = " +attemptNo);
+//	console.log("attemptNo = " +attemptNo);
 	if (attemptNo == 0) {
 		if (totalWin == 0) {
 			console.log("***HANGMAN!***");
@@ -83,7 +83,7 @@ var guessLetter = function(inputGuess) {
 		return;
 	} else if (totalWin == lettersOfWord.length - 1) {
 		console.log("Congratulation! You are winning the game.");
-	} else {	
+	} else if (totalWin == 0) {	
 		console.log("Please try again!");
 	}
 	console.log("********************************************************");

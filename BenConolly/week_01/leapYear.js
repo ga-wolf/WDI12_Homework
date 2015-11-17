@@ -26,6 +26,11 @@
 
 
 
+//Look at LeapYear.html
+//Button runs the function, but I don't know how to make it display on the page.
+
+
+
 var isLeapYear = function (currentY) {
 	// Now as a single fancy logical expression!
 	if ( ((currentY%4) === 0 ) && ( ((currentY%100) !== 0) ||( (currentY%400) === 0) ) ) {

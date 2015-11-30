@@ -4,6 +4,7 @@ def menu
   puts "(2). Division"
   puts "(3). Subtraction"
   puts "(4). Multiplication"
+  puts "(5). Exponential"
   puts "(q). Quit"
   print "Please select a number!"
 end
@@ -56,4 +57,14 @@ if user_descision == '4'
   multinum2 = gets.to_i
   multiplication = multinum1 * multinum2
   puts "Your result is #{multiplication}" 
+end
+
+#EXPONENTIAL
+if user_descision == '5'
+  puts "Please enter first intergral"
+  exponent1 = gets.to_i
+  puts "Please enter second intergral"
+  exponent2 = gets.to_i
+  exponential = exponent1 ** exponent2
+  puts "Your result is #{exponential}"
 end

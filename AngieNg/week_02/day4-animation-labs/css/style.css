@@ -1,0 +1,28 @@
+body {
+	background: url(http://theatrefactory.com.au/wp-content/uploads/2014/04/FreeGreatPicture.com-32215-stage-background.jpg);
+	background-size: 100%;
+	overflow: hidden;
+}
+
+img {
+	margin: 380px 0;
+	position: absolute;
+}
+
+.turnLeft {
+	-webkit-transform: scaleX(-1);
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	transform: scaleX(-1);
+	ms-filter: "FlipH";
+	filter: FlipH;
+}
+
+.turnRight {
+	-webkit-transform: scaleX(1);
+	-moz-transform: scaleX(1);
+	-o-transform: scaleX(1);
+	transform: scaleX(1);
+	ms-filter: "FlipH";
+	filter: FlipH;
+}

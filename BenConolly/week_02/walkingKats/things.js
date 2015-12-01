@@ -7,7 +7,6 @@ apertureLogo.style.top='-500px'
 cat.style.position = 'absolute';
 cat.style.left = '-300px';
 
-var theWidth = window.innerWidth;
 var delta = 5
 var danceTimer = 0
 
@@ -21,7 +20,7 @@ var walkAround = function() {
   var oldLeft = parseInt(cat.style.left);
   var newLeft = oldLeft + delta;
   cat.style.left = newLeft + 'px';
-  if ( ( theWidth/2 === newLeft ) && (delta >= 0 )) {
+  if ( ( window.innerWidth === newLeft ) && (delta >= 0 )) {
   	danceTimer = 0;
   	clearInterval(striding);
   	cat.className="hidden";

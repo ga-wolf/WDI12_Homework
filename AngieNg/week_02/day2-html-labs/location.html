@@ -1,0 +1,74 @@
+<!--
+Lab: Famous computer scientist fansite
+Research one (or more) of the following:
+
+Ada Lovelace
+Alan Turing
+John von Neumann
+Norbert Wiener
+Claude Shannon
+Grace Hopper
+H. Marshall Mcluhan
+Donald Knuth
+Richard M. Stallman
+Larry Wall
+Yukihiro Matsumoto
+Jenn Schiffer
+Requirements
+
+At least 3 pages (example: biography, trivia, hometown)
+At least 1 Google Font
+Whatever HTML and CSS you desire
+Keep your code clean and DRY
+Start working with semantic elements: http://html5doctor.com/lets-talk-about-semantics/
+No Javascript! Even if you know how to use jQuery, see how far you can push this with pure HTML + CSS
+Don't worry about responsiveness -- desktop resolution is fine
+Your research should aim to reveal at least two things about each person:
+
+Why Joel admires them
+Something Joel doesn't already know about them
+Optional extras
+
+Experiment with http://fortawesome.github.io/Font-Awesome/
+Try embedding media (YouTube or Vimeo video, Soundcloud, podcasts)
+Try embedding a Google map (for their hometown and/or alma mater)
+
+-->	
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Famous computer scientist fansite</title>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<header>
+			<div class="column-left-logo">Grace Brewster Murray Hopper </div>
+			<nav>
+				<ul>
+					<li><a class="fa fa-home fa-2x" href="index.html"></a></li>
+					<li><a href="trivia.html">Trivia</a></li>
+					<li><a href="location.html">Location</a></li>
+				</ul>
+			</nav>	
+		</header>
+
+		<div id="container">
+		  <div id="container-header-location"></div>	
+		     <div id="main-content">	
+				<div class="content-location">
+		      	    <div class="column-left">
+		      	    	<h2>Place of burial</h2>
+		      	    	<a href="https://www.google.com.au/maps/place/arlington+national+cemetery/@38.8783252,-77.068671,15z/data=!4m2!3m1!1s0x0:0x2e88f076d9242a6d?sa=X&ved=0ahUKEwjFsMXs4aHJAhXkMKYKHf_cCmEQ_BIIKTAC"><img src="https://www.google.com.au/maps/vt/data=RfCSdfNZ0LFPrHSm0ublXdzhdrDFhtmHhN1u-gM,r6PiOPXyP1WgEDhiogBFm4ZWiO1Mczpu13kO_unBlnt2CHt9_fkhhElCTKPLXABq6ueMtvmjTOdR7Tgw9038Rw5Tx02YZRKcae5KpHVJQgyFjTnBcPYueceHLCfVzB5yc6La3YLmCbpAsA" style="height:200px; width:400px"></a>
+		      	    </div>	
+		      	 	<div class="column-right"><p>Arlington National Cemetery, Virginia, United States</p>
+		      	    	<p>	Arlington, VA 22211, United States </p>
+						<p> +1 877-907-8585</p>
+		      	    </div>
+		      	 </div>				      		
+	  	  </div>
+		</div>
+	</body>
+</html>

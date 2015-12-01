@@ -65,10 +65,7 @@ var randomAudio = 0;
 var body = document.getElementsByTagName("body")[0];
 
 var cat;
-
-var kameha = document.createElement("img");
-kameha.src = "http://gotrunko.free.fr/GIF%20ANIME/72.gif";
-kameha.style.position = "absolute";
+var kameha;
 
 var spiritBomb = document.createElement("img");
 spiritBomb.src = "http://www.picgifs.com/anime/dragon-ball-z/goku/anime-goku-161573.gif";
@@ -86,6 +83,25 @@ var stopAudio = function(audio, time) {
 
 var randomInt = function(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+var createKameha = function(top, left, width) {
+	kameha = document.createElement("img");
+	kameha.src = "http://gotrunko.free.fr/GIF%20ANIME/72.gif";
+	kameha.style.position = "absolute";
+	kameha.style.top = top;
+	
+	if (turned) {
+		kameha.style.left = left - kameha.width + 50 + "px";
+		kameha.style.transform = "scaleX(1)";
+	}
+	else {
+		kameha.style.left = left + width - 50 + "px";
+		kameha.style.transform = "scaleX(-1)";
+	}
+
+	
+	body.appendChild(kameha);
 }
 
 var createCat = function(top, left) {
@@ -188,19 +204,7 @@ var putGoku = function() {
 		stopAudio(audio[1], 11);
 	}
 
-	kameha.style.top = cat.style.top;
-	
-	if (turned) {
-		kameha.style.left = parseInt(cat.style.left) - kameha.width + 50 + "px";
-		kameha.style.transform = "scaleX(1)";
-	}
-	else {
-		kameha.style.left = parseInt(cat.style.left) + cat.width - 50 + "px";
-		kameha.style.transform = "scaleX(-1)";
-	}
-
-	
-	body.appendChild(kameha);
+	createKameha(cat.style.top, parseInt(cat.style.left), cat.width);
 
 	randomAudio = randomInt(0, 1);
 	if (randomAudio === 0) {

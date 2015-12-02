@@ -1,0 +1,4 @@
+<h1><%= @message %></h1>
+<% @links.each do |link| %>
+  <a href="<%= link[:url] %>"><%= link[:text] %></a>
+<% end %>

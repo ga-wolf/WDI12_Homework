@@ -2,7 +2,27 @@
 <p>Your movie poster is <img src="<%= @poster %>"></p>
 
 
-<p>Your search URL WORKS <%= @movie_search_url %>.</p>
-<p>Your search INFO WORKS <%= @movie_search_info %>.</p>
 
-<p>Your search results are <%= @search_info %>. DOES NOT WORK???</p>
+    <% @search_title_info.each do |i|%>
+    <% @title = i %>
+    <p>Your search results are <%= i %>.</p>
+    <% end %>
+
+
+
+    <% @search_imbdID_info.each do |b|%>
+    <% @link = b %>
+    
+    <p>Your search results are 
+    <a href="http://www.imdb.com/title/<%= @link %>">sadfasdf</a>.</p>
+    <% end %>
+
+
+<!-- <p>Your links are <%=   @clickable_links %>.</p> -->
+
+
+
+<!-- <a href="https://generalassemb.ly/">WhateverTEst</a>
+
+<p>Yblajdslkfj <%=   @object %>.</p> -->
+

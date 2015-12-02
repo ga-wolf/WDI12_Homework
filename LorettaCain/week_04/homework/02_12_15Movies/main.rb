@@ -22,11 +22,45 @@ get '/movie' do
 
     @movie_search_info = HTTParty.get @movie_search_url;
 
-    @search_info = @movie_search_info[ 'Title' ]
+    @search_title_info = @movie_search_info['Search'].collect {|movies| movies['Title']}
+
+    @search_imbdID_info = @movie_search_info['Search'].collect {|movies| movies['imdbID']}
+
+      @object =[]
+
+      i = 0
+      until i == @search_imbdID_info.length
+        @object.push(i)
+        i += 1
+      end
+
+    @clickable_links = "http://www.imdb.com/title/#{ @search_imbdID_info }/"
+
+    # @movies = @movies_search_info['Search'].collect {|movies| movies['Title']}
+
+      # i = 0
+      # until i == @search_info.length
+      #   @output = "i is now #{i}"
+      #   i += 1
+      # end
+
+    
+
+    # @titles_list = 
 
 
   erb :movie
 end
+
+
+
+# i = 0
+# until i == 10 do 
+#   puts "i is now #{ i }"
+#   i += 1
+# end
+# puts "Thank you for using this code"
+
 
  # @stock = params[:symbol]
  #    @stock_data = YahooFinance::get_quotes(YahooFinance::StandardQuote, @stock);

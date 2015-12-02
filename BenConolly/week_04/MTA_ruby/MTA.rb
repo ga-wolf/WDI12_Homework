@@ -29,6 +29,8 @@ def journey_array (stop1, stop2, line)
   end
 end
 
+#====================================
+#The only function you need to run
 def plan_trip (start_stop, start_line, end_stop, end_line)
   unless start_line == end_line
     shared = lines[start_line] & lines[end_line]
@@ -36,13 +38,18 @@ def plan_trip (start_stop, start_line, end_stop, end_line)
     part1 = journey_array(start_stop, change_station, start_line)
     part2 = journey_array(change_station, end_stop, end_line)
     journey = [part1, part2]
-    p journey
+    journey_length = journey.flatten.length - 1
     "First travel from #{ start_stop } to #{ part1.last }, and change to #{ end_line } line."
   else
     journey = journey_array(start_stop, end_stop, start_line)
-    p journey
+    journey_length = journey.length
   end
+  p journey
+  p journey_length
 end
+
+# The terrible terrible line of code
+# "First travel from #{ line[start_line][[line][start_line].index(line[start_line.index(start_stop)..line[start_line.index(change_station)])] } to #{ line[start_line.index(change_station)]) }, and change to #{ end_line } line travelling from #{ line[start_line][line][end_line].index(line[end_line.index(change_station)..line[end_line.index(end_stop)])] }."
 
 require 'pry'
 binding.pry

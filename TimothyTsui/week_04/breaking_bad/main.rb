@@ -31,12 +31,26 @@ get '/characters/:id' do
   erb :character_show
 end
 
+# delete a record from the database
 get '/characters/:id/delete' do
   query = "DELETE FROM characters WHERE id=#{ params[:id] }"
   query_db(query)
   redirect to('/characters')
 end
 
+# show edit form
+get '/characters/:id/edit' do
+  query = "SELECT * FROM characters WHERE id=#{ params[:id] }"
+  result = query_db(query)
+  @character = result.first
+  erb :character_edit
+end
+
+post '/characters/:id' do
+  query = "UPDATE characters SET first_name='#{ params[:first_name] }', last_name='#{ params[:last_name] }', age=#{ params[:age] }, gender='#{ params[:gender] }', occupation='#{ params[:occupation] }', aliases='#{ params[:aliases] }', image='#{ params[:image] }' WHERE id=#{ params[:id] }"
+  query_db(query)
+  redirect to("/characters/#{ params[:id] }")
+end
 
 def query_db(sql)
   db = SQLite3::Database.new('characters.db')

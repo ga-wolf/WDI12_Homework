@@ -5,8 +5,10 @@
   <title>ATM</title>
   <link rel="stylesheet" href="css/atm.css">
   <script src="js/jquery-1.7.2.js"></script>
-  <script src="js/functioncode.js"></script>
-  <script src="js/UIcode.js"></script>
+  <script src="js/jquery-numeric.js"></script>
+  <script src="js/jquery.funtext.js"></script>
+
+  <script src="js/atm.js"></script>
 </head>
 <body>
 
@@ -19,16 +21,16 @@
 
     <div class="account" id="checking">
       <h1>Checking</h1>
-      <div class="balance" id="checking-balance">0</div>
-      <input id="checking-amount" type="text" placeholder="enter an amount" />
+      <div class="balance" id="checking-balance">$0</div>
+      <input id="checking-amount" class="positive-integer right-click-paste" type="text" placeholder="enter an amount" />
       <input id="checking-deposit" type="button" value="Deposit" />
       <input id="checking-withdraw" type="button" value="Withdraw" />
     </div>
 
     <div class="account" id="savings">
       <h1>Savings</h1>
-      <div class="balance" id="savings-balance">0</div>
-      <input id="savings-amount" type="text" placeholder="enter an amount" />
+      <div class="balance" id="savings-balance">$0</div>  
+      <input id="savings-amount" type="text" class="positive-integer right-click-paste" placeholder="enter an amount" />
       <input id="savings-deposit" type="button" value="Deposit" />
       <input id="savings-withdraw" type="button" value="Withdraw" />
     </div>
@@ -36,7 +38,6 @@
     <div class="clear"></div>
 
   </div>
-
 
 </body>
 </html>

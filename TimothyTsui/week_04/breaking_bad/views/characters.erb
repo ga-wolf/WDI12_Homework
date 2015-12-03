@@ -1,0 +1,11 @@
+<h1>Breaking Bad Characters</h1>
+
+<ul>
+<% @characters.each do |character| %>
+  <li>
+    <a href="/characters/<%= character['id'] %>">
+      <%= character['first_name'] %> <%= character['last_name'] %>
+    </a>
+  </li>
+<% end %>
+</ul>

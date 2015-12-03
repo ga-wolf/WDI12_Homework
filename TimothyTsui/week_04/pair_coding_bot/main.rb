@@ -6,48 +6,34 @@ def makeURL(text, url)
   { :text => text, :url => url }
 end
 
-get '/' do
-  @message = 'Do you have a test for that?'
-  # binding.pry
-  @links = [makeURL('Yes', '/pass'),
-          makeURL('No', '/write_test')]
-  erb :dialog
-end
-
-get '/write_test' do
-  @message = 'Write a test'
-  @links = [makeURL('Done', '/pass')]
-  erb :dialog
-end
-
-get '/pass' do
-  @message = 'Does the test pass?'
-  @links = [makeURL('Yes', '/refactor'),
-          makeURL('No', 'write_code')]
-  erb :dialog
-end
-
-get '/write_code' do
-  @message = 'Write just enough code for the test to pass.'
-  @links = [makeURL('Done', '/pass')]
-  erb :dialog
-end
-
-get '/refactor' do
-  @message = 'Need to refactor?'
-  @links = [makeURL('Yes', '/do_refactor'),
-          makeURL('No', '/new_feature')]
-  erb :dialog
-end
-
-get '/new_feature' do
-  @message = 'Select a new feature to implement.'
-  @links = [makeURL('Continue', '/')]
-  erb :dialog
-end
-
-get '/do_refactor' do
-  @message = 'Refactor the code.'
-  @links = [makeURL('Done', '/pass')]
+get '/*' do
+  route = params['splat'].join;
+  # p route
+  case route
+    when '' then
+      @message = 'Do you have a test for that?'
+      @links = [makeURL('Yes', '/pass'),
+              makeURL('No', '/write_test')]
+    when 'write_test' then
+      @message = 'Write a test'
+      @links = [makeURL('Done', '/pass')]
+    when 'pass' then
+      @message = 'Does the test pass?'
+      @links = [makeURL('Yes', '/refactor'),
+              makeURL('No', 'write_code')]
+    when 'write_code' then
+      @message = 'Write just enough code for the test to pass.'
+      @links = [makeURL('Done', '/pass')]
+    when 'refactor' then
+      @message = 'Need to refactor?'
+      @links = [makeURL('Yes', '/do_refactor'),
+              makeURL('No', '/new_feature')]
+    when 'new_feature' then
+      @message = 'Select a new feature to implement.'
+      @links = [makeURL('Continue', '/')]
+    when 'do_refactor' then
+      @message = 'Refactor the code.'
+      @links = [makeURL('Done', '/pass')]
+  end
   erb :dialog
 end

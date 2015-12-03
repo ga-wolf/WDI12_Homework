@@ -1,0 +1,12 @@
+<h2>All Dinosaurs</h2>
+
+<ul>
+  <% @dinosaurs.each do |dino| %>
+    <li>
+      <a href="/dinosaurs/<%= dino['id'] %>">
+      <%= dino['name']%>
+      </a>
+    </li>
+  <% end %>
+</ul>
+

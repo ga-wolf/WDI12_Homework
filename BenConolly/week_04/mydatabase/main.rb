@@ -64,9 +64,7 @@ end
 
 post '/games/:id' do
   games = query_db "UPDATE games SET name='#{ params[:name] }', studio='#{ params[:studio] }', cover='#{ params[:cover] }', genre='#{ params[:genre] }', score='#{ params[:score] }' WHERE id=#{ params[:id] }"
-  query_db games
-  # redirect to ("/games/#{ params[:id] }")
-  redirect to ('/games')
+  redirect to ("/games/#{ params[:id] }")
 end
 
 def query_db (sql)

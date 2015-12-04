@@ -1,0 +1,9 @@
+<h2>Our Current Database</h2>
+<ul>
+  <% @movies.each do |movie| %>
+  <li>
+    <a href="/movie/<%= movie.id %>"><%= movie.title %></a>
+  </li>
+  <% end %>
+
+</ul>

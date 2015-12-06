@@ -1,6 +1,5 @@
 CREATE TABLE movies (
-    if INTEGER PRIMARY KEY AUTOINCREMENT,
-    imdbID TEXT,
+    imdbID TEXT PRIMARY KEY,
     Title TEXT,
     Rated TEXT,
     Released TEXT,
@@ -12,5 +11,5 @@ CREATE TABLE movies (
     Plot TEXT,
     Poster TEXT,
     Metascore INTEGER,
-    ImdbRating TEXT
+    imdbRating TEXT
 );

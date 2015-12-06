@@ -21,12 +21,11 @@ end
 
 def search_all_movies movie_title
     movie_url = "http://omdbapi.com/?s=#{movie_title}"
-    movie_search_info = HTTParty.get movie_url
-    movie_search_info = movie_search_info["Search"] || []
+    movie_search_info = (HTTParty.get movie_url)["Search"] || []
 end
 
-def search_movie movie_title
-    movie_url = "http://omdbapi.com/?i=#{movie_title}"
+def search_movie movie_id
+    movie_url = "http://omdbapi.com/?i=#{movie_id}&plot=full"
     HTTParty.get movie_url
 end
 
@@ -44,7 +43,7 @@ def save_movie movie
     new_movie.Plot = movie["Plot"]
     new_movie.Poster = movie["Poster"]
     new_movie.Metascore = movie["Metascore"]
-    new_movie.ImdbRating = movie["imdbRating"]
+    new_movie.imdbRating = movie["imdbRating"]
 
     new_movie.save;
 end
@@ -53,24 +52,10 @@ get "/" do
     movie_title = params[:movie_title]
 
     if movie_title && movie_title.strip! != ""
-
-        if Movie.where("Title like ?", "%#{movie_title}%").length > 0
-            @movie_search_results = Movie.where("Title like ?", "%#{movie_title}%")
-        else
-            @movie_search_results = search_all_movies movie_title
-
-            if @movie_search_results != []
-
-                @movie_search_results.each do |movie|
-                    if !(Movie.where(imdbID: "#{movie["imdbID"]}").exists?)
-                        save_movie search_movie movie["imdbID"]
-                    end
-                end
-            else
-                @search_term = movie_title
-            end
-        end
+        @movie_search_results = (search_all_movies movie_title).sort_by! { |movie| movie["Title"] }
     end
+
+    @search_term = movie_title unless @movie_search_results != []
 
     if @movie_search_results && @movie_search_results.length == 1
         redirect to("/#{@movie_search_results.first["imdbID"]}")
@@ -84,8 +69,30 @@ get "/:id" do
         @movie = search_movie params[:id]
         save_movie @movie
     else
-        @movie = Movie.find_by_imdbID params[:id]
+        @movie = Movie.find_by_imdbID params[:id] || {"Response" => "False"}
     end
 
     erb :home
 end
+
+
+
+# The following code saves all movie search results to database
+# Came from the get "/" do block
+
+# if Movie.where('Title LIKE ?', "%#{movie_title}%").length > 0
+#             @movie_search_results = Movie.where('Title LIKE ?', "%#{movie_title}%")
+        
+        
+#         else
+#             @movie_search_results = search_all_movies movie_title
+
+#             if @movie_search_results != []
+
+#                 @movie_search_results.each do |movie|
+#                     if !(Movie.where(imdbID: "#{movie["imdbID"]}").exists?)
+#                         save_movie search_movie movie["imdbID"]
+#                     end
+#                 end
+#             end
+#         end

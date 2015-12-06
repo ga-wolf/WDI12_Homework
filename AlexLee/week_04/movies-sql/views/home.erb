@@ -1,4 +1,4 @@
-<div class="movie-box" id="<% if params[:id] %>movie-info<% end %>">
+<div class="movie-box" id="<% if params[:id] && @movie["Response"] == "True" %>movie-info<% end %>">
             <h1>Movies!!!</h1>
 
             <form action="/" class="movie-search-form">
@@ -14,37 +14,41 @@
                     <a href="/<%= movie["imdbID"] %>"><%= movie["Title"] %></a>
                 </li>
             </ul>
+
             <%
                     end
                 end
-
-                if @search_term
             %>
-            <div>Unable to find movies that contain "<%= @search_term %>" in their title</div>
+
+            <% if @search_term %>
+            <div class="error-message">No matches for "<%= @search_term %>"</div>
             <% end %>
-            <%
-                if params[:id]
-            %>
-                <h2><%= @movie.Title %></h2>
-                <% if @movie.Poster == "N/A" %>
-                <img src="/images/noposter.jpg"/>
-                <% else %>
-                <img src="<%= @movie.Poster %>"/>
-                <% end %>
-                <p>
-                    <% star_width = (309 - ( 309 * ( @movie.ImdbRating.to_f / 10 ) ).round ).to_s + "px" %>
-                    <div class="stars" id="full-stars" style="background-position: <%= star_width %> 0; left: -<%= star_width %>;"></div>
-                    <div class="stars" id="empty-stars"></div>
-                <p>Metascore: <%= @movie.Metascore %>/100</p>
-                <p>Rating: <%= @movie.Rated %></p>
-                <p>Released: <%= @movie.Released %></p>
-                <p>Runtime: <%= @movie.Runtime %></p>
-                <p>Genre: <%= @movie.Genre %></p>
-                <p>Directed by: <%= @movie.Director %></p>
-                <p>Writters<br><%= @movie.Writer %></p>
-                <p>Starring<br><%= @movie.Actors %></p>
-                <p>Plot<br><%= @movie.Plot %></p>
 
-            </div>
+            <% if params[:id] && @movie["Response"] == "True" %>
+            <h2><%= @movie["Title"] %></h2>
+
+            <% if @movie["Poster"] == "N/A" %>
+            <img src="/images/noposter.jpg"/>
+            <% else %>
+            <img src="<%= @movie["Poster"] %>"/>
+            <% end %>
+            
+            <p>
+                <% star_width = (309 - ( 309 * ( @movie["imdbRating"].to_f / 10 ) ).round ).to_s + "px" %>
+                <div class="stars" id="full-stars" style="background-position: <%= star_width %> 0; left: -<%= star_width %>;"></div>
+                <div class="stars" id="empty-stars"></div>
+            </p>
+
+            <p>Metascore: <%= @movie["Metascore"] %>/100</p>
+            <p>Rating: <%= @movie["Rated"] %></p>
+            <p>Released: <%= @movie["Released"] %></p>
+            <p>Runtime: <%= @movie["Runtime"] %></p>
+            <p>Genre: <%= @movie["Genre"] %></p>
+            <p>Directed by: <%= @movie["Director"] %></p>
+            <p>Writters<br><%= @movie["Writer"] %></p>
+            <p>Starring<br><%= @movie["Actors"] %></p>
+            <p>Plot<br><%= @movie["Plot"] %></p>
+            <% elsif params[:id] && @movie["Response"] != "" %>
+            <div class="error-message">Error - Movie ID (imdbID) Invalid</div>
             <% end %>
         </div>

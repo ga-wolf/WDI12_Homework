@@ -1,21 +1,28 @@
-<p>Your movie title is <%= @movie_title %></p>
-<p>Your movie poster is <img src="<%= @poster %>"></p>
+<!-- <p>Your movie title is <%= @movie_title %></p>
+<p>Your movie poster is <img src="<%= @poster %>"></p> -->
+
+
+<%=  @zipTitleIMBD %>
+
+  
+
+ <p> Your search results are: </p>
+
+
+<% @zipTitleIMBD.each do |i|%>
+ <% @array = i %> 
+  <p><%= @array[0] %></p>
+  <p><a href="http://www.imdb.com/title/<%= @array[1] %>"><img src="<%= @array[2] %>"></a>
+<% end %>
 
 
 
-    <% @search_title_info.each do |i|%>
-    <% @title = i %>
-    <p>Your search results are <%= i %>.</p>
-    <% end %>
-
-
-
-    <% @search_imbdID_info.each do |b|%>
+ <!--    <% @search_imbdID_info.each do |b|%>
     <% @link = b %>
     <p>Your search results are 
     <a href="http://www.imdb.com/title/<%= @link %>">sadfasdf</a>.</p>
     <% end %>
-
+ -->
 
 <!-- <p>Your links are <%=   @clickable_links %>.</p> -->
 

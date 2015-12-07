@@ -26,15 +26,24 @@ get '/movie' do
 
     @search_imbdID_info = @movie_search_info['Search'].collect {|movies| movies['imdbID']}
 
-      @object =[]
+    @search_Poster = @movie_search_info['Search'].collect {|movies| movies['Poster']}
 
-      i = 0
-      until i == @search_imbdID_info.length
-        @object.push(i)
-        i += 1
-      end
 
-    @clickable_links = "http://www.imdb.com/title/#{ @search_imbdID_info }/"
+    @zipTitleIMBD = @search_title_info.zip(@search_imbdID_info, @search_Poster)
+
+    # [1,2,3].zip(["a","b","c"], [:a,:b,:c])
+
+    # @zipAbovePoster = @zipTitleIMBD.zip @search_Poster
+
+    #   @object =[]
+
+    #   i = 0
+    #   until i == @search_imbdID_info.length
+    #     @object.push(i)
+    #     i += 1
+    #   end
+
+    # @clickable_links = "http://www.imdb.com/title/#{ @search_imbdID_info }/"
 
     # @movies = @movies_search_info['Search'].collect {|movies| movies['Title']}
 

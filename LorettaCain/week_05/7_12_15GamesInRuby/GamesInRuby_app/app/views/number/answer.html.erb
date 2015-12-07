@@ -1,0 +1,16 @@
+<nav>
+  <a href="/">All Games</a>
+</nav>
+
+<p><%= @answer %></p>
+
+<p>
+
+  <form action="/number/answer">
+
+    <input type="integer" name="human_guess" placeholder="Guess a number.">
+   
+    <button>Guess again?</button>
+
+  </form>
+</p>

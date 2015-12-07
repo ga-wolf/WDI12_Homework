@@ -1,0 +1,20 @@
+<h2>Rock, Paper, Scissors, Lizard, Spock!</h2>
+<div>
+    <a href="/rps_lizard_spock?throw=rock"><img src="/assets/rock.gif" alt="rock"></a>
+    <a href="/rps_lizard_spock?throw=paper"><img src="/assets/paper.gif" alt="paper"></a>
+    <a href="/rps_lizard_spock?throw=scissors"><img src="/assets/scissors.gif" alt="scissors"></a>
+    <a href="/rps_lizard_spock?throw=lizard"><img src="/assets/lizard.gif" alt="lizard"></a>
+    <a href="/rps_lizard_spock?throw=spock"><img src="/assets/spock.gif" alt="spock"></a>
+</div>
+
+<div>
+     <% if params[:throw] %>
+        <div>You threw a <img src="/assets/<%= @player_choice %>"/></div>
+        <div>Opponent threw a <img src="/assets/<%= @computer_choice %>"/></div>
+        <% if @winner %>
+            <%= @result %><img src="/assets/<%= @winner %>"/>
+        <% else %>
+            <p><%= @result %></p>
+        <% end %>
+     <% end %>
+</div>

@@ -1,0 +1,14 @@
+<h2>Did you do it?</h2>
+
+<p>You picked: <%= @playerchoice %></p>
+<p>Your skilled opponent picked: <%= @compchoice %></p>
+<p><strong><%= @result %></strong></p>
+
+<form action="/rps/winneris">
+  <select name="playerchoice" id="">
+    <option value="rock">Rock</option>
+    <option value="paper">Paper</option>
+    <option value="scissors">Scissors</option>
+  </select>
+  <button>Play Again</button>
+</form>

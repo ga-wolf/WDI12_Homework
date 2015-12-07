@@ -1,0 +1,11 @@
+<h1>Did you match up?<h1/>
+
+<h3>You guessed:</h3>
+<p><%= @guess %></p>
+
+<p><%= @response %></p>
+
+<form action="/numberguess/guessagain">
+  <input type="number" name="guess">
+  <button>Guess</button>
+</form>

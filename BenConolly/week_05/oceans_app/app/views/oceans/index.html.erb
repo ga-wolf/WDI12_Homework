@@ -1,0 +1,10 @@
+<p>All Earth's Oceans</p>
+
+<ul>
+<% @oceans.each do |ocean|%>
+  <li><a href="oceans/<%= ocean[:id] %>"><%= ocean[:name] %> Ocean</a></li>
+<% end %>
+</ul>
+
+
+<a href="/oceans/new">Create a whole new Ocean</a>

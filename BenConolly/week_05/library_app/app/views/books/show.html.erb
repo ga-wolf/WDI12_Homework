@@ -1,0 +1,12 @@
+<h1><%= @book.name %></h1>
+
+<%= image_tag(@book.cover, :class => 'feature') unless @book.cover.nil? %>
+
+<p>Published in: <%= @book.year %></p>
+<p>Genre: <%= @book.genre %></p>
+<p>Author: <%= link_to(@book.author.name, @book.author) unless @book.author.nil? %></p>
+
+<div class="controls">
+<%= link_to 'Edit Book', edit_book_path %>
+<%= button_to 'Delete Book',@book, :method => :delete, :data => { :confirm => "Burn the book?"} %>
+</div>

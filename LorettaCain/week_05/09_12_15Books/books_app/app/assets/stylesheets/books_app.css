@@ -1,0 +1,58 @@
+img.thumb {
+  max-width:4em;
+}
+
+img.feature {
+  max-width: 50%;
+}
+
+label {
+  min-width: 130px;
+  display: inline-block;
+  text-align: right
+}
+
+body {
+  background-color: black;
+  background-image: url("http://i1133.photobucket.com/albums/m590/Johnfwills/LibraryBackground.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+
+}
+
+ul {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+ 
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  text-align: center;
+  color: white;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: rgba(0, 0, 0, 0.61);
+}
+
+
+h1, h2, p, a, input, button{
+  font-size: 200%;
+  text-align: center;
+  color: white;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: rgba(0, 0, 0, 0.61);
+}
+
+.feature {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.form {
+  font-size: 10px;
+}

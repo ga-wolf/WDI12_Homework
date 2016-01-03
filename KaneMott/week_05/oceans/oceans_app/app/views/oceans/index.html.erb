@@ -1,0 +1,9 @@
+<h1>All oceans</h1>
+
+Planet count: <%= @oceans.length %>
+
+<% @oceans.each do |ocean| %>
+<li>
+	<a href="/planets/<%= ocean.id %>"><%= ocean.name %></a>
+</li>
+<%end%>

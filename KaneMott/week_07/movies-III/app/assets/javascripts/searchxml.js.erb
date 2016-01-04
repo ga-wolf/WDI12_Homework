@@ -1,0 +1,121 @@
+
+//List search
+
+$(document).on('click', '.movieLink', function(evt){
+	evt.preventDefault();
+	singleSearch($(this).text());
+})
+
+
+var singleSearch = function(titleValue){
+	var searchQuery = new XMLHttpRequest();
+		
+		searchQuery.open ('GET', 'http://omdbapi.com/?t='+titleValue )
+
+			searchQuery.onreadystatechange = function(){
+
+				if (searchQuery.readyState !== 4){
+					return
+				};
+
+				var info = JSON.parse( searchQuery.responseText );
+
+// REMOVES HIDDEN STATUS FROM PAGE ELEMENTS, DESTROYS ANY OLD GENERATED LISTS RATHER THAN HIDING THEM - 
+// DELETES THE LAST MOVIE BOX ONCE THERE ARE 4 ON THE PAGE
+
+				$('h1, .input, .posterBox, button, input').removeClass('hidden')
+				$('.resultList, .movieLink').remove();
+
+				if ($('.movieBox').length === 4){
+					$('.posterBox .movieBox:nth-child(4)').remove();
+				};
+
+// IMAGE NOT FOUND PLACEHOLDER
+
+				if (info['Poster'] === "N/A"){
+					info['Poster'] = "<%= asset_path( 'giphyloading.gif' ) %>"
+				}
+
+// GENERATES MOVIE BOX WITH TITLE, POSTER AND PLOT
+
+				var movieBox = $(
+					'<div class="movieBox insetShadow">'+
+						'<h3 class="textContain">'+info['Title']+'</h3>'+
+						'<a href="http://www.imdb.com/title/'+info['imdbID']+'">'+
+						'<img class="shadowed" src="'+info['Poster']+'" alt="The poster image for '+info['Title']+'." />'+
+						'</a>'+
+						'<div class="paragraphBlock">'+
+							'<p>'+info['Plot']+'</p>'+
+						'</div>'+
+					'</div>')
+
+// ADDS GENERATED ELEMENTS TO START OF PAGE
+	
+		movieBox.prependTo('.posterBox')
+			};
+
+	searchQuery.send();
+
+};
+
+// SEARCH ON CLICK
+
+$(document).ready(function(){
+	$('button').on('click', function(){
+
+		var searchQuery = new XMLHttpRequest();
+		searchQuery.open ('GET', 'http://omdbapi.com/?s='+$('input').val() )
+
+			searchQuery.onreadystatechange = function(){
+				if (searchQuery.readyState !== 4){
+					return
+				};
+				var info = JSON.parse( searchQuery.responseText );
+
+				if (info['Search'] === undefined) {
+					var error = $('<h4 class="error">Sorry, we could not find "'+$('input').val()+'" in our database - please check your spelling or try another search.</h4>');
+					error.appendTo('.container h1');
+					setTimeout(function(){
+					  $('.error').remove();
+					}, 4000);
+
+				};
+				// IF MULTIPLE RESULTS
+
+				if (info['Search'].length > 1){
+
+					var manyResults = $(
+						'<div class="resultList shadowed">'+
+							'<h1>Did you mean:</h1>'+
+								'<div class="textContain">'+
+									'<ul></ul>'+
+								'</div>'+
+						'</div>');
+
+					// HIDE OTHER ELEMENTS
+					$('h1, .input, .posterBox, button, input').addClass('hidden')
+
+					// GENERATE CONTAINER FOR MOVIE TITLES AND POPULATE WITH LINKS
+
+					manyResults.prependTo('.container');
+
+					for (var i = 0; i < info['Search'].length; i++){
+						var movieTitle = $('<li><a class="movieLink" href="">'+info['Search'][i]['Title']+'</a></li>')
+						movieTitle.appendTo('.resultList .textContain ul');
+					}
+
+					// IF ONLY ONE RESULT IS RETURNED RUN SINGLESEARCH
+
+				} else if (info['Search'].length === 1){
+					singleSearch( $('input').val() );
+				}
+
+		} // SEARCHQUERY
+
+		searchQuery.send();
+
+	}) //  END ON CLICK
+ });// END DOC READY
+
+
+

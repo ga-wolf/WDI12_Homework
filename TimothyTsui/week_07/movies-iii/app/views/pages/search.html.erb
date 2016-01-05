@@ -1,0 +1,65 @@
+<h1>Movies III</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <form class="form-inline text-center" role="form">
+      <div class="form-group">
+        <label>Find movie info</label>
+        <input id="search" class="form-control" type="search" placeholder="jaws">
+      </div>
+      <button id="get-info" class="btn btn-primary-outline">Get Info</button>
+    </form>
+    <div id="result" class="text-center"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="movie-panel panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#movie0" aria-expanded="true" aria-controls="collapseOne">
+            Movie Title
+          </a>
+        </h4>
+      </div>
+      <div id="movie0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <img class="img-responsive pull-left">
+            </div>
+            <div class="col-md-8">
+              <table class="table table-striped">
+                <tr>
+                  <td>Genre:</td>
+                  <td class="genre">This is da genre</td>
+                </tr>
+                <tr>
+                  <td>Plot:</td>
+                  <td class="plot">This is da plot</td>
+                </tr>
+                <tr>
+                  <td>Actors:</td>
+                  <td class="actors">This is da actors</td>
+                </tr>
+                <tr>
+                  <td>Year:</td>
+                  <td class="year">This is da year</td>
+                </tr>
+                <tr>
+                  <td>Rating:</td>
+                  <td class="rated">This is da rated</td>
+                </tr>
+                <tr>
+                  <td>Runtime:</td>
+                  <td class="runtime">This is da runtime</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div id="container">
+<h1>Search</h1>
+<%= form_tag '#', :id => "search" do %>
+<%= search_field_tag :query %>
+    <%= submit_tag 'Go' %>
+ <% end %>
+ <br>
+ <div id="results"></div> 
+
+ </div>

@@ -1,9 +1,9 @@
-var ajaxInfo = { inProgress: false, page: 1 };
+var currentPage = 1;
 
 var searchFlickr = function (query) {
-
-  console.log(query);
-
+  console.log('Doing ajax request on page ' + currentPage);
+  // prevent future scroll events from firing this function until this one is done
+  $(window).off('scroll', checkScrollPos);
   var flickrUrl = 'https://api.flickr.com/services/rest/?jsoncallback=?';
 
   $.getJSON(flickrUrl, {
@@ -11,30 +11,37 @@ var searchFlickr = function (query) {
     api_key: '2f5ac274ecfac5a455f38745704ad084',
     text: query,
     format: 'json',
-    page: ajaxInfo.page
+    page: currentPage
   }).done(function(info) {
-    console.log(info, ajaxInfo.pages);
-    displayPhotos(info.photos.photo); // actual photos are buried deep in object
-    if (ajaxInfo.pages === undefined) {
-      ajaxInfo.pages = info.photos.pages;
+    console.log(info);
+    displayPhotos(info.photos.photo, info.photos.page, info.photos.pages); // actual photos are buried deep in object
+    if (info.photos.page < info.photos.pages){
+      $(window).on('scroll', checkScrollPos); // turn on scroll detection only when there are more photos
     }
-
-  }).always(function(){
-    ajaxInfo.inProgress = false;
-    if (ajaxInfo.page < ajaxInfo.pages){
-      ajaxInfo.page += 1;
-    }
+    currentPage++;
   });
 };
 
-var displayPhotos = function (photos) {
+// make ajax request once every 4s so if user keeps scrolling to bottom of page
+// continuously, it won't fire off dozens of simultaneous ajax requests
+var throttledSearchFlickr = _.throttle(searchFlickr, 4000, {trailing: false});
+
+var checkScrollPos = function() {
+  var scrollBottom = $(document).height() - ($(window).height() + $(window).scrollTop());
+  if (scrollBottom < 400){
+    var query = $('#query').val();
+    throttledSearchFlickr( query );
+  }
+};
+
+var displayPhotos = function (photos, page, pages) {
   var images = '';
   _.each(photos, function(photo){
     var photoURL = generateURL(photo);
-    // console.log(photoURL);
     images += '<img src="' + photoURL + '">';
   });
-  $('#results').append(images + '<hr>');
+  // i know styling in tags is bad but i cbf-ed adding a css just for this element
+  $('#results').append(images + '<p style="background-color: grey; color: white; text-align: right">Page ' + page + ' / ' + pages + '</p>');
 };
 
 var generateURL = function (photo) {
@@ -55,30 +62,11 @@ $(document).ready(function(){
 
   $('#search').on('submit', function(e){
     e.preventDefault();
+    currentPage = 1;  // reset page counter to first page on new search
+    $('#results').empty();  // clear all previous photos
     var query = $('#query').val();
-
     searchFlickr( query );
-    console.log(ajaxInfo.page, ajaxInfo.pages, ajaxInfo.inProgress);
   });
 
-
-  var checkScrollPos = function() {
-    // console.log('checking scroll pos');
-    var scrollBottom = $(document).height() - ($(window).height() + $(window).scrollTop());
-    if (scrollBottom > 400) { return; }
-    console.log(ajaxInfo.page, ajaxInfo.pages, ajaxInfo.inProgress);
-    if (ajaxInfo.page > ajaxInfo.pages) {
-      $(window).off('scroll');
-    } else if (ajaxInfo.inProgress) {
-      console.log('Not doing anything until current ajax is done');
-      return;
-    } else {
-      var query = $('#query').val();
-      ajaxInfo.inProgress = true;
-      ajax = searchFlickr( query );
-    }
-  };
-
-  var checkScrollPosThrottle = _.throttle(checkScrollPos, 500);
-  $(window).on('scroll', checkScrollPosThrottle);
+  $(window).on('scroll', checkScrollPos);
 });

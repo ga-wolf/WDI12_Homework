@@ -33,11 +33,3 @@ var TodoList = Backbone.Collection.extend({
 });
 
 app.Todos = new TodoList();
-
-// var list = new TodoList([
-//     {title: 'do 1', completed: false},
-//     {title: 'do 2', completed: true}
-// ]);
-
-// console.log(list.first().toJSON(), list.at(1).toJSON());
-// console.log(list.remaining()[0].toJSON());

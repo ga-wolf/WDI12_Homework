@@ -6,15 +6,15 @@
   <link rel="stylesheet" href="assets/index.css">
 </head>
 <body>
-  <section id="todoapp">
+  <section class="todoapp">
     <header id="header">
       <h1>todos</h1>
-      <input type="text" id="new-todo" placeholder="What needs to be done?" autofocus>
+      <input type="text" class="new-todo" placeholder="What needs to be done?" autofocus>
     </header>
     <section id="main">
-      <input type="checkbox" id="toggle-all">
+      <input type="checkbox" class="toggle-all">
       <label for="toggle-all">Mark all as complete</label>
-      <ul id="todo-list"></ul>
+      <ul class="todo-list"></ul>
     </section>
     <footer id="footer"></footer>
   </section>
@@ -29,7 +29,7 @@
       <label><%= title %></label>
       <button class="destroy"></button>
     </div>
-    <input type="text" class="edit" value="<%= title %>/>
+    <input class="edit" value="<%= title %>">
   </script>
   <script type="text/template" id="stats-template">
     <span id="todo-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %></span>

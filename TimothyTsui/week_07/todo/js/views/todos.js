@@ -26,7 +26,6 @@ app.TodoView = Backbone.View.extend({
   // re-renders the titles fo the todo item
   render: function() {
     this.$el.html( this.template( this.model.attributes ) );
-    debugger
     this.$el.toggleClass( 'completed', this.model.get('completed') );
     this.toggleVisible();
 

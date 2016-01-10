@@ -7,18 +7,18 @@
 </head>
 <body>
   <section class="todoapp">
-    <header id="header">
+    <header class="header">
       <h1>todos</h1>
       <input type="text" class="new-todo" placeholder="What needs to be done?" autofocus>
     </header>
-    <section id="main">
+    <section class="main">
       <input type="checkbox" class="toggle-all">
       <label for="toggle-all">Mark all as complete</label>
       <ul class="todo-list"></ul>
     </section>
-    <footer id="footer"></footer>
+    <footer class="footer"></footer>
   </section>
-  <div id="info">
+  <div class="info">
     <p>Double-click to edit a todo</p>
     <p>Written by <a href="#">Tim</a></p>
     <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
@@ -32,8 +32,8 @@
     <input class="edit" value="<%= title %>">
   </script>
   <script type="text/template" id="stats-template">
-    <span id="todo-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %></span>
-    <ul id="filters">
+    <span class="todo-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %></span>
+    <ul class="filters">
       <li>
         <a href="#/" class="selected">All</a>
       </li>
@@ -45,7 +45,7 @@
       </li>
     </ul>
     <% if (completed) { %>
-      <button id="clear-completed">Clear completed (<%= completed %>)</button>
+      <button class="clear-completed">Clear completed (<%= completed %>)</button>
     <% } %>
   </script>
   <script src="js/lib/jquery-min.js"></script>

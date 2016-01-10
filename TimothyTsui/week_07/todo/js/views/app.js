@@ -7,15 +7,15 @@ app.AppView = Backbone.View.extend({
 
   events: {
     'keypress .new-todo': 'createOnEnter',
-    'click #clear-completed': 'clearCompleted',
+    'click .clear-completed': 'clearCompleted',
     'click .toggle-all': 'toggleAllComplete'
   },
 
   initialize: function() {
     this.allCheckbox = this.$('.toggle-all')[0];
     this.$input = this.$('.new-todo');
-    this.$footer = this.$('#footer');
-    this.$main = this.$('#main');
+    this.$footer = this.$('.footer');
+    this.$main = this.$('.main');
 
     this.listenTo(app.Todos, 'add', this.addOne);
     this.listenTo(app.Todos, 'reset', this.addAll);
@@ -41,7 +41,7 @@ app.AppView = Backbone.View.extend({
       }));
 
       // app.TodoFilter is set by router
-      this.$('#filters li a')
+      this.$('.filters li a')
         .removeClass('selected')
         .filter('[href="#/' + ( app.TodoFilter || '' ) + '"]')
         .addClass('selected');

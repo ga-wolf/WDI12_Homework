@@ -10,7 +10,7 @@ directory.Views.PersonView = Backbone.View.extend({
     // console.log('person view!!!!!!!!!!' + this.template());
   },
   render: function() {
-    console.log('show person view ' + this.model.attributes );
+    console.log('show person view ' + this.model );
     this.$el.html( this.template( this.model.toJSON() ) );
   }
 });

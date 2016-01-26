@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BooksApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div id="container">
+    <nav>
+      <a href="<%= authors_path %>">All Authors</a> |
+      <a href="<%= new_author_path %>">New Author</a> |
+      <a href="<%= books_path %>">All Books</a> |
+      <a href="<%= new_book_path %>">New Book</a>
+    </nav>
+
+    <%= yield %>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+@import url(https://fonts.googleapis.com/css?family=Handlee);
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;   
+}
+
+body {
+    font-family: 'Handlee', cursive;
+    color: darkgreen;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.no-pad {
+    padding: 0;
+    margin: 0;
+}
+
+#strikethrough {
+    font-weight: bold;
+    text-decoration: line-through;
+}
+
+#menu {
+    height: 127px;
+    width: 100%;
+    text-align: center;
+    -webkit-box-shadow: 0px 6px 25px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 6px 25px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 6px 25px 0px rgba(0,0,0,0.75);
+    background-color: #FFFDF7;
+    position: fixed;
+    z-index: 99;
+}
+
+#header {
+    width: 300px;
+    color: darkgreen;
+    text-decoration: none;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+#search {
+    height: 55px;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#search input {
+    height: 55px;
+    color: #333;
+    font-weight: bold;
+    font-size: 2em;
+    background-color: #E9FFE8;
+    outline: none;
+}
+
+#search input[type="search"] {
+    border-top: 4px solid #333;
+    border-left: 4px solid #333;
+    border-bottom: 4px solid #333;
+    border-right: 2px solid #333;
+
+
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 10px;
+}
+
+#search input[type="submit"] {
+    background: #1FCF19;
+    border-top: 4px solid #333;
+    border-left: 2px solid #333;
+    border-bottom: 4px solid #333;
+    border-right: 4px solid #333;
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 25px;
+}
+
+#search input[type="submit"]:hover {
+    background-color: #2BAB00;
+}
+
+#search input[type="submit"]:active {
+    border-style: inset;
+    background-color: green;
+}
+
+#results {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 127px;
+}
+
+#error-msg {
+    margin-top: 1.25em;
+    text-align: center;
+    font-size: 3em;
+}
+
+.loader {
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    background-image: url(<%= asset_path("tie-fighter.gif") %>);
+}

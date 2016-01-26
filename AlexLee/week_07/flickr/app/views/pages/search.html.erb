@@ -1,0 +1,12 @@
+<div id="menu">
+    <div id="strikethrough">&nbsp;&nbsp;flickr&nbsp;&nbsp;</div>
+    <a href="/" id="header"><h1>Photo Search</h1></a>
+
+    <%= form_tag("#", :id => "search", :class => "no-pad col-xs-12 col-md-5") do %>
+        <%= search_field_tag("query", "", :class => "col-md-9", :autofocus => true) %><!--
+        --><%= submit_tag("Search", :class => "col-md-3") %>
+    <% end %>
+</div>
+
+
+<div id="results"></div>

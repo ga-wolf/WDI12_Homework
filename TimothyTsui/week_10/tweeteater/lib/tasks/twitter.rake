@@ -15,7 +15,7 @@ namespace :twitter do
   task :search, [:query, :limit] => :environment do |t, args|
     # Dont bother creating users, just fetch the tweets and shove them in the DB
 
-    Client.search(args[:query], result_type: "recent", lang: "en").take(args[:limit].to_i).each do |tweet|
+    $client.search(args[:query], result_type: "recent", lang: "en").take(args[:limit].to_i).each do |tweet|
       Tweet.create :post => tweet.full_text
     end
   end

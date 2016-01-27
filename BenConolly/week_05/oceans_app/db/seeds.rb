@@ -1,0 +1,1 @@
+Ocean.create :name => 'Indian', :covers => '70560000', :avgDepth => '3741', :maxDepth => '7906', :percentage => '19.5', :volume => '264000000'

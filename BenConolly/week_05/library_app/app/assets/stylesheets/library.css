@@ -1,0 +1,30 @@
+.container {
+  max-width: 80%;
+  margin: auto;
+}
+
+.feature {
+  max-width: 10rem;
+}
+
+.controls {
+  display: inline;
+}
+
+nav {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.new_book label {
+  min-width: 4rem;
+  display: inline-block;
+  text-align: right;
+}
+
+.new_author label {
+  min-width: 5rem;
+  display: inline-block;
+  text-align: right;
+}

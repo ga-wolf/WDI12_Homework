@@ -1,0 +1,9 @@
+<h1>Photo Search</h1>
+
+
+<%= form_tag '#', :id => 'search' do %>
+  <%= search_field_tag :query %>
+  <%= submit_tag 'Go' %>
+<% end %>
+
+<div id="results"></div>

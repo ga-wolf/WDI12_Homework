@@ -40,6 +40,9 @@ def plan_trip (start_stop, start_line, end_stop, end_line)
     journey = [part1, part2]
     journey_length = journey.flatten.length - 1
     "First travel from #{ start_stop } to #{ part1.last }, and change to #{ end_line } line."
+
+
+
   else
     journey = journey_array(start_stop, end_stop, start_line)
     journey_length = journey.length

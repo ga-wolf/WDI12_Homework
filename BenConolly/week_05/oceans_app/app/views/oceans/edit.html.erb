@@ -1,0 +1,11 @@
+<h2>Let us change the values of the Oceans</h2>
+
+<form action="/oceans/<%= @ocean.id %>" method="post">
+  <p>Name: <input type="text" name="ocean[name"] value="<%= @ocean.name %>"></p>
+  <p>Ocean Covers: (km<sup>2</sup>) <input type="number" name="ocean[covers]" value="<%= @ocean.covers %>"></p>
+  <p>Average Depth: (metres) <input type="number" name="ocean[avgDepth]" value="<%= @ocean.avgDepth %>"></p>
+  <p>Maximum Depth: (metres) <input type="number" name="ocean[maxDepth]" value="<%= @ocean.maxDepth %>"></p>
+  <p>Percentage of world's Oceans: <input type="number" name="ocean[percentage]" value="<%= @ocean.percentage %>"></p>
+  <p>Volume: (km<sup>3</sup>) <input type="number" name="ocean[volume]" value="<%= @ocean.volume %>"></p>
+  <button>SUBMIT</button>
+</form>

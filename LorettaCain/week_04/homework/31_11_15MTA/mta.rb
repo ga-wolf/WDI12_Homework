@@ -51,6 +51,7 @@ def sameline(linestart, lineend, stationstart, stationend)
   if linestart == lineend
     printstops(linestart, stationstart, stationend)
   else 
+    puts "Your journey begins here: "
     puts log_to_union(linestart, stationstart)
     count = log_to_union(linestart, stationstart).count
     puts "Change at Union Square to continue your journey: "
@@ -63,6 +64,7 @@ end
 
 def printstops(line, stationstart, stationend) 
   if stationend > stationstart
+  puts "Your journey begins here: "
   puts line[stationstart..stationend]
   count = line[stationstart..stationend].count
   puts "Your total number of stops for this trip is: #{count}" 

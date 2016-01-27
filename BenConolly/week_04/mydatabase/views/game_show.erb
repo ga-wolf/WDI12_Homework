@@ -1,0 +1,9 @@
+<h3><%= @game['name'] %></h3>
+
+<img src="<%= @game['cover'] %>" alt="" class="feature">
+<p>Made by <%= @game['studio'] %></p>
+<p>Genre: <%= @game['genre'] %></p>
+<p><%= @game['score'] %>/10</p>
+
+<a href="/games/<%= @game['id'] %>/delete">Delete it foreva</a>
+<a href="/games/<%= @game['id'] %>/edit">Change the info</a>

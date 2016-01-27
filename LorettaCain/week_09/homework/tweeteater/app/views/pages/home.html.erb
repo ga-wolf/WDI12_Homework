@@ -1,0 +1,4 @@
+<h1>Tweet me.</h1>
+<% $client.search("#Coke").take(5).collect do |tweet|%>
+  <p><%= "#{tweet.user.screen_name}: #{tweet.text}"%></p>
+<% end %>

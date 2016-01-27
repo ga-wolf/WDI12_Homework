@@ -1,0 +1,20 @@
+<%= form_for @author do |a| %>
+  <p>
+    <%= a.label :name %>
+    <%= a.text_field :name, :required => true %>
+  </p>
+  <p>
+    <%= a.label 'Date of Birth' %>
+    <%= a.text_field :dob %>
+  </p>
+  <p>
+    <%= a.label :nationality %>
+    <%= a.text_field :nationality %>
+  </p>
+  <p>
+    <%= a.label 'Image URL' %>
+    <%= a.url_field :image %>
+  </p>
+
+  <%= a.submit %>
+<% end %>

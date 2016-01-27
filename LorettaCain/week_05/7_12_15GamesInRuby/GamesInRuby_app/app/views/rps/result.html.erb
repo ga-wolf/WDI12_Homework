@@ -1,0 +1,18 @@
+<nav>
+  <a href="/">All Games</a>
+</nav>
+
+<p>Computer Guess is <%= @computer_guess %></p>
+<p>Your Guess is <%= @human_guess %></p>
+
+<p><%= @winner %></p>
+
+<p>
+  <form action="/rps/result">
+
+    <input type="integer" name="human_guess" placeholder="Your move here.">
+   
+    <button>Play again?</button>
+
+  </form>
+</p>

@@ -1,0 +1,9 @@
+<h1>All planets</h1>
+
+Planet count: <%= @planets.length %>
+
+<% @planets.each do |planet| %>
+<li>
+	<a href="/planets/<%= planet.id %>"><%= planet.name %></a> has <%= pluralize(planet.moons, 'moon') %>
+</li>
+<%end%>

@@ -1,0 +1,13 @@
+<h2><%= @mountain.name %></h2>
+
+<% unless @mountain.image.nil? %>
+  <%= image_tag(@mountain.image) %>
+<% end %>
+
+<p>Location: <%= @mountain.location %></p>
+<p>First ascent: <%= @mountain.first_ascent %></p>
+<p>Death rate: <%= @mountain.death_rate %></p>
+<p>Altitude: <%= pluralize(@mountain.altitude, 'metre') %></p>
+
+<%= link_to('Edit', "/mountains/#{ @mountain.id }/edit") %>
+<%= button_to('Delete', "/mountains/#{ @mountain.id }", :method => :delete) %>

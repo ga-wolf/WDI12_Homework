@@ -1,0 +1,9 @@
+<h2>Game List</h2>
+
+<ul>
+  <% @games.each do |game| %>
+  <li>
+    <a href="/games/<%= game['id'] %>"><%= game['name'] %></a>
+  </li>
+  <% end %>
+</ul>

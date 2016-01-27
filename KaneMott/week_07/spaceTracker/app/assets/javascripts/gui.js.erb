@@ -1,0 +1,29 @@
+
+
+$(document).ready(function(){
+
+	$.ajax({ url: 'http://api.open-notify.org/iss-now', dataType: "jsonp" }).done(function (data) {
+		issLatitude = data.iss_position.latitude;
+		issLongitude = data.iss_position.longitude
+
+	initMap(issLatitude,issLongitude);
+	placeISSLogo(issLatitude,issLongitude);
+	updateCoords();
+	})
+
+	$.ajax({ url: 'http://api.open-notify.org/astros', dataType: "jsonp" }).done(function (peopleData) { 
+		spacePeople = peopleData; 
+		genInfo(spacePeople);
+	});
+
+});
+
+$(document).ready(function(){
+	$('.infoButton').hover(
+  function() {
+    $('.info').css('display','inline')
+  }, function() {
+    $('.info').css('display','none');
+  }
+);
+})

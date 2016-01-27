@@ -1,0 +1,22 @@
+<h2>Edit Dinosaur</h2>
+
+<form action="/dinosaurs/<%= @dinosaurs['id'] %>" method="post"> 
+<!-- Had to add method="post" to update form -->
+  <label for="">Name:</label>
+  <input type="text" name="name" value="<%= @dinosaurs['name'] %>">
+  <label for="">Eon:</label>
+  <input type="text" name="eon" value="<%= @dinosaurs['eon'] %>">
+  <label for="">Era:</label>
+  <input type="text" name="era" value="<%= @dinosaurs['era'] %>">
+  <label for="">Period:</label>
+  <input type="text" name="period" value="<%= @dinosaurs['period'] %>">
+  <label for="">Extent:</label>
+  <input type="text" name="extent" value="<%= @dinosaurs['extent'] %>">
+  <label for="">Duration:</label>
+  <input type="text" name="duration" value="<%= @dinosaurs['duration'] %>">
+  <label for="">Image:</label>
+  <input type="url" name="image" value="<%= @dinosaurs['image'] %>">
+
+  <button>Edit Dinosaur</button>
+</form>
+

@@ -1,0 +1,18 @@
+<h2><%= @ocean.name %></h2>
+
+<% unless @ocean.image.nil? %>
+    <%= image_tag(@ocean.image) %>
+    <% # <%= image_tag(@ocean.image, :alt => "gypsies") %>
+<% end %>
+
+<p>Area: <%= number_with_delimiter @ocean.area %>km²</p>
+<p>Average Depth: <%= number_with_delimiter @ocean.depth %>m</p>
+<p>Greatest Known Depth: <%= number_with_delimiter @ocean.greatest_depth %>m</p>
+<p>Place of Greatest Known Depth: <%= @ocean.place_of_greatest_depth %></p>
+
+<p>
+    <%= link_to("Edit Ocean", "/oceans/#{ @ocean.id }/edit") %>
+    <%= button_to("Destroy Ocean", "/oceans/#{ @ocean.id }", :method => :delete) %>
+</p>
+
+<a href="/oceans"><< back</a>

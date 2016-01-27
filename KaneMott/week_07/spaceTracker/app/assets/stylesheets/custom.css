@@ -1,0 +1,47 @@
+* {
+	box-sizing: border-box;
+	color: rgba(20,20,20,0.8);
+	font-family: Arial, Helvetica;
+}
+
+body {
+	background-color: rgba(100,100,100,0.1);
+}
+
+h5 {
+	border-top: 1px solid rgba(40,40,40,0.5);
+	border-bottom: 1px solid rgba(40,40,40,0.5);
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.container {
+	width: 504px;
+	margin: auto;
+	border: 2px solid rgba(40,40,40,0.5);
+	border-radius: 0 0 20px 20px;
+}
+
+.map, .innerContain{
+	text-align: center;
+	margin: auto;
+	width: 500px;
+
+}
+
+.infoContain {
+	margin: auto;
+	width: 500px;
+	padding: 20px;
+	border-top: 1px solid rgba(40,40,40,0.5);
+	background-color: rgba(150,150,150,0.3);
+}
+
+.info {
+	margin: auto;
+	border: 1px solid rgba(240,240,240,0.8);
+	width: 300px;
+	text-align: center;
+	border-radius: 20px;
+	padding: 20px;
+	background-color: rgba(220,220,220,0.9);
+}

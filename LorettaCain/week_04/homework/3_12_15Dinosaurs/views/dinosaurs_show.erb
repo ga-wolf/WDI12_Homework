@@ -1,0 +1,19 @@
+<h2><%= @dinosaurs['name'] %></h2>
+<h3>Eon: <%= @dinosaurs['eon']%></h3>
+<h4>Era: <%= @dinosaurs['era']%></h4>
+<h4>Period: <%= @dinosaurs['period']%></h4>
+<h4>Lived between <%= @dinosaurs['extent']%> million years ago.</h4>
+<h4>Alive for approximently <%= @dinosaurs['duration']%> million years.</h4>
+
+
+
+<% unless @dinosaurs['image'].nil? %>
+<img src="<%= @dinosaurs['image'] %>" class="feature">
+<% end %>
+
+
+<p>
+<a href="/dinosaurs/<%= @dinosaurs['id'] %>/delete">Delete</a>
+<a href="/dinosaurs/<%= @dinosaurs['id'] %>/edit">Edit</a>
+</p>
+

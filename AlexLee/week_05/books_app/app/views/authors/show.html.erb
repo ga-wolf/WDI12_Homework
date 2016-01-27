@@ -1,0 +1,29 @@
+<h1><%= @author.name %></h1>
+
+<%= image_tag(@author.image, :class => "feature") %>
+
+<div class="bottom-bar">
+    <ul class="info">
+        <li>Nationality: <%= @author.nationality %></li>
+        <li>Date of Birth: <%= @author.dob.strftime "%A, %B %e, %Y" unless @author.dob.nil? %></li>
+        <li>Website: <%= link_to(@author.website, @author.website, :target => "_blank") %></li>
+        <li>Genre: <%= @author.genre %></li>
+    </ul>
+
+    <% @author.books.each do |book| %>
+        <%= link_to( image_tag( book.cover_image, :class => "thumb" ), book ) %>
+    <% end %>
+
+    <div class="controls">
+        <%= link_to("Edit Author", edit_author_path) %> |
+        <%= link_to("Delete Author", @author, :method => :delete, :data => { :confirm => "Are you sure?"} ) %>
+    </div>
+</div>
+
+<% if @author.id != @first_author.id %>
+<a href="<%= author_path(@previous_author) unless @previous_author.nil? %>"><div class="previous"><</div></a>
+<% end %>
+
+<% if @author.id != @last_author.id %>
+<a href="<%= author_path(@next_author) unless @next_author.nil? %>"><div class="next">></div></a>
+<% end %>

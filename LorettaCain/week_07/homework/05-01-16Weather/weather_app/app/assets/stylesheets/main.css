@@ -1,0 +1,17 @@
+#container {
+  margin: auto;
+  text-align: center;
+  border: 2mm solid black;
+  width: 60em;
+}
+
+p {
+  color: blue;
+  margin: 0;
+}
+
+#result {
+  background-color: rgba(222, 222, 222, 0.5);
+  border: 2mm solid red;
+  margin-top: 5em;
+}

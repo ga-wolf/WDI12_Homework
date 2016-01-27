@@ -1,0 +1,24 @@
+label {
+  display: block;
+}
+
+input {
+  display: block;
+  margin: auto;
+}
+
+* {
+  text-align: center;
+}
+
+.container {
+  width: 600px;
+  background-color: rgba(0, 100, 100, 0.5);
+  margin: auto;
+  height: 100%;
+  padding: 1em;
+}
+
+img.feature {
+  max-width: 70%;
+}

@@ -1,0 +1,102 @@
+@import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
+
+* {
+   
+}
+
+body {
+    font-family: 'Architects Daughter', cursive;
+    background-image: url(/images/paws_bg.png);
+}
+
+nav, #dogs-list {
+    text-align: center;
+}
+
+input, label {
+    display: block;
+}
+
+input {
+    font-family: 'Architects Daughter', cursive !important;
+    border-radius: 20px;
+    padding: 0 0.5em;
+}
+
+input[type=url] {
+    width: 500px;
+}
+
+label {
+    margin-top: 0.5em;
+}
+
+button {
+    font-family: 'Architects Daughter', cursive !important;
+    border-radius: 20px;
+    margin-top: 0.5em !important;
+    outline: 0;
+    background-color: #C99D71;
+}
+
+h2 {
+    text-align: center;
+}
+
+a {
+    color: #C99D71;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul, li {
+    list-style-type: none;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+}
+
+#po {
+    border-radius: 50%;
+    border: 5px solid black;
+}
+
+#dream-bubble {
+    width: 100%;
+    height: 75vh;
+    background-image: url(/images/dog_dream.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.feature {
+    max-width: 45%;
+    max-height: 50%;
+    border-radius: 100px;
+    position: relative;
+    top: 15%;
+    right: 10%;
+}
+
+#options {
+    margin-top: 15%;
+}
+
+#info-block {
+    width: 60%;
+    margin: auto;
+}

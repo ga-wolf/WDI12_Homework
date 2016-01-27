@@ -1,0 +1,12 @@
+<h2>The <%= @ocean.name %> Ocean</h2>
+
+<p>Some fact about the <%= @ocean.name %> Ocean</p>
+
+<p>The <%= @ocean.name %> Ocean covers <%= @ocean.covers || "an unknown number of" %> km<sup>2</sup>.</p>
+<p>The <%= @ocean.name %> Ocean has an average depth of <%= @ocean.avgDepth || "an unknown number of" %> metres.</p>
+<p>The <%= @ocean.name %> Ocean has a maximum depth of <%= @ocean.maxDepth || "an unknown number of"%> metres.</p>
+<p>The <%= @ocean.name %> Ocean makes up <%= @ocean.percentage || "an unknown number of"%>% of the world's ocean.</p>
+<p>The <%= @ocean.name %> Ocean has a volume of <%= @ocean.volume || "an unknown number of"%> km<sup>3</sup>.</p>
+
+<%= link_to('Re-evaluate Ocean', "/oceans/#{ @ocean.id }/edit") %>
+<%= button_to('Drain Ocean', "/oceans/#{ @oceans.id}", :method => :destroy) %>

@@ -1,0 +1,12 @@
+.movie_thumbnail {
+  width: 160px;
+  height: 240px;
+}
+
+.movie_preview {
+  display: inline-block;
+  width: 180px;
+  height: 300px;
+  vertical-align: top;
+  background-color: grey;
+}

@@ -1,0 +1,8 @@
+<p> Your search results are: </p>
+
+
+<% @movie_info['Search'].each do |i|%> 
+  <p><a href="/movie/<%= i['imdbID'] %>"><%= i['Title'] %></a>
+<% end %>
+
+

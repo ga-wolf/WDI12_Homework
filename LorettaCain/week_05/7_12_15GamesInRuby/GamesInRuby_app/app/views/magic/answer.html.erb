@@ -1,0 +1,17 @@
+<nav>
+  <a href="/">All Games</a>
+</nav>
+
+<p>Magic 8 Ball says: <strong><%= @answer %></strong></p>
+
+
+<p>
+
+  <form action="/magic/answer">
+
+    <input type="text" name="question" placeholder="Question here.">
+   
+    <button>Ask another question?</button>
+
+  </form>
+</p>

@@ -1,0 +1,14 @@
+<h2><%= @ocean.name %></h2> 
+
+<% unless @ocean.image.nil? %>
+  <%= image_tag(@ocean.image) %>
+<% end %>
+
+<p>Location: <%= @ocean.location %></p>
+<p>Bordering Countries: <%= @ocean.bordering_countries %></p>
+<p>Facts: <%= @ocean.facts %></p>
+
+<p>
+  <%= link_to('Edit Ocean', "/#{ @ocean.id }/edit") %>
+  <%= button_to('Destroy Ocean', "/#{ @ocean.id }", :method => :delete) %>
+</p>

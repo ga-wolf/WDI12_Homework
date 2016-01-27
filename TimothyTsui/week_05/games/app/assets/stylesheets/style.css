@@ -1,0 +1,70 @@
+@import url(https://fonts.googleapis.com/css?family=Frijole);
+
+body {
+  background-image: url('http://www.allaboutduncan.com/wp-content/uploads/2007/11/hahaha.jpg');
+background-size: cover;
+  color: red;
+
+  font-family: 'Frijole', cursive;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  text-align: center;
+  margin: 0;
+}
+
+.container {
+  background-image: url('http://24.media.tumblr.com/f476fcc027d9360bc113bb46f720fed2/tumblr_mlas731I451rf5vsao1_500.gif');
+  background-size: cover;
+  width: 70vw;
+  margin: auto;
+  padding: 1em;
+  flex-grow: 1;
+  border-top-right-radius:44%;
+  border-top-left-radius:54%;
+  border-bottom-left-radius:24%;
+  border-bottom-right-radius:14%;
+  border: 1px solid white;
+}
+
+a {
+  color: yellow;
+  transition: all 1s;
+}
+
+a:hover {
+  color: red;
+  -webkit-transform: skewX(50deg) scale(2);
+  display:inline-block;
+}
+
+h2 {
+  -webkit-transform: rotate(5deg);
+  text-shadow: 5px 5px 2px white;
+  text-align: center;
+  font-size: 2em;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  -webkit-filter: blur(1px) saturate(0%);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.7);
+}
+
+img:hover {
+  box-sizing: border-box;
+  border:5px solid red;
+  /*-webkit-filter: saturate(20%);*/
+}
+
+input, button {
+  font-size: 1em;
+  font-family: 'Frijole', cursive;
+  -webkit-transform: rotate(-10deg);
+}
+
+p {
+  font-size: 2em;
+}

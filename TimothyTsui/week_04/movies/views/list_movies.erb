@@ -1,0 +1,3 @@
+<% @movies.each do |movie| %>
+   <a href="/query_imdbID?id=<%= movie['imdbID'] %>"><div class="movie_preview"><img class="movie_thumbnail" src="<%= movie['Poster'] %>" alt=""> <br> <%= movie['Title'] %> (<%= movie['Year'] %>)</div></a>
+<% end %>

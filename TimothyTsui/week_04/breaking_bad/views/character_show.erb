@@ -1,0 +1,28 @@
+
+<h2>Character Profile</h2>
+<img src="<%= @character['image'] %>" class="profile_image" alt="">
+<table>
+  <tr>
+    <td>Name:</td>
+    <td><%= @character['first_name'] %> <%= @character['last_name'] %></td>
+  </tr>
+  <tr>
+    <td>Aliases:</td>
+    <td><%= @character['aliases'] %></td>
+  </tr>
+  <tr>
+    <td>Gender:</td>
+    <td><%= @character['gender'] %></td>
+  </tr>
+  <tr>
+    <td>Age:</td>
+    <td><%= @character['age'] %> years old</td>
+  </tr>
+  <tr>
+    <td>Occupation:</td>
+    <td><%= @character['occupation'] %></td>
+  </tr>
+</table>
+
+<a href="/characters/<%= @character['id'] %>/delete">Delete</a>
+<a href="/characters/<%= @character['id'] %>/edit">Edit</a>

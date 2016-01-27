@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ThreeGamesApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+	<form action="/magic_eight_ball">
+		<input type="text" name="magic8" placeholder="SEEK YOUR FORTUNE">
+		<button>Submit</button>
+	</form>
+
+	<form action="/number_guess">
+		<input type="text" name="player_number" placeholder="PICK A NUMBER (1-10)">
+		<button>Submit</button>
+	</form>
+
+	<form action="/rps">
+		<input type="text" name="player_rps" placeholder="ROCK, PAPER OR SCISSORS">
+		<button>Submit</button>
+	</form>
+</body>
+</html>

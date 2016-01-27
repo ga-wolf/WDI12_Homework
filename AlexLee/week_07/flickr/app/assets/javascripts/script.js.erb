@@ -1,0 +1,113 @@
+var searchFlickr = function(query, count) {
+    var flickrUrl = 'https://api.flickr.com/services/rest/?jsoncallback=?';
+
+    $.getJSON(flickrUrl, {
+        method: 'flickr.photos.search',
+        api_key: '4ba4bae408e81c2e4f6acbb59f357f13',
+        text: query,
+        format: 'json',
+        page: count,
+        per_page: 50
+    }).done( function(info){
+        
+        console.log(info);
+        $(".loader").remove();
+        totalPages = info.photos.pages;
+
+        if (info.photos.pages === 0) {
+            displayErrorMessage(query);
+        }
+        else {
+            displayPhotos(info.photos.photo);
+            $(window).data('ajaxready', true);
+        }
+
+        page++;
+    });
+}
+
+var generateURL = function(photo, size) {
+    return [
+        "http://farm",
+        photo.farm,
+        ".static.flickr.com/",
+        photo.server,
+        "/",
+        photo.id,
+        "_",
+        photo.secret,
+        "_" + size + ".jpg" // Change this for different sizes
+    ].join('');
+}
+
+var displayPhotos = function(photos) {
+    var margin = Math.floor( ( $(document).width() / 150 ) / 2 );
+
+    var images = "";
+    _.each(photos, function(photo) {
+        var photoURL = generateURL(photo, "q");
+        var photoLargeURL = generateURL(photo, "c");
+        var photoTitle = photo.title;
+
+        if (!photo.title) {
+            photoTitle = "Untitled";
+        }
+
+        images += '<a href="' + photoLargeURL + '" data-lightbox="result-image-set" data-title="' + photoTitle + '"><img src="' + photoURL + '" style="margin: ' + margin + 'px"></a>';
+    });
+    $("#results").append(images);
+}
+
+var displayErrorMessage = function(query) {
+    var $msg = $("<div/>")
+        .attr("id", "error-msg")
+        .html("No photos found for<br>" + query);
+
+    $("#error-msg").remove();
+    $("#results").append($msg);
+}
+
+var loader = function() {
+    $loader = $("<div/>")
+        .attr("class", "loader");
+
+    $("#results").append($loader);
+}
+
+var page = 1;
+var totalPages = 99;
+var query = "";
+
+$(document).ready(function () {
+    
+    $("#search").on("submit", function(event) {
+        event.preventDefault();
+
+        $("#results").empty();
+        query = $("#query").val();
+        page = 1;
+
+        if (query) {
+            searchFlickr(query, page);
+        }
+    });
+
+
+    $(window).data('ajaxready', true).on("scroll", function() {
+        if ( $(window).data('ajaxready') === false ) {
+            return;
+        }
+        var scrollBottom = $(document).height() - ( $(window).height() + $(window).scrollTop() );
+        if (scrollBottom > 100) {
+            return;
+        }
+
+        $(window).data('ajaxready', false);
+
+        if (totalPages > page) {
+            loader();
+            searchFlickr(query, page);
+        }
+
+    });
+});

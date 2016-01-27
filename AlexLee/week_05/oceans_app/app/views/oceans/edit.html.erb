@@ -1,0 +1,12 @@
+<h2>Edit Ocean</h2>
+
+<form action="/oceans/<%= @ocean.id %>" method="POST">
+    <p>Name: <input type="text" name="ocean[name]" value="<%= @ocean.name %>"></p>
+    <p>Image: <input type="url" name="ocean[image]" value="<%= @ocean.image %>"></p>
+    <p>Area: <input type="text" name="ocean[area]" value="<%= @ocean.area %>"></p>
+    <p>Depth: <input type="text" name="ocean[depth]" value="<%= @ocean.depth %>"></p>
+    <p>Greatest Known Depth: <input type="text" name="ocean[greatest_depth]" value="<%= @ocean.greatest_depth %>"></p>
+    <p>Place of Greatest Known Depth: <input type="text" name="ocean[place_of_greatest_depth]" value="<%= @ocean.place_of_greatest_depth %>"></p>
+
+    <button>Edit Ocean</button>
+</form>

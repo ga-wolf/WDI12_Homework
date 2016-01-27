@@ -1,0 +1,145 @@
+var rand = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var imgArray = ["batmanvsuperman.jpg", "civilwar.jpg", "deadpool.jpg", "independenceday.jpg", "kungfupanda3.jpg", "papaz.jpg"];
+
+var setBackgroundImage = function() {
+    var img = imgArray[rand( 0, (imgArray.length - 1) )];
+    return "url(/assets/" + img + ")";
+}
+
+var prevBg = "";
+
+var movieTrailer = function($display_element, movie_id) {
+    $.ajax( "http://api.themoviedb.org/3/movie/" + movie_id + "/videos", {
+        data: {
+            api_key: "fc7cf7c679f751e0b10ce587e82005d3"
+        }
+    }).done(function(info) {
+        console.log(info);
+
+        if ( info["results"].hasOwnProperty(0) ) {
+            var youtubeId = info["results"][0]["key"];
+
+            var $video = $("<div/>")
+                .addClass("embed-responsive embed-responsive-16by9")
+                .html('<iframe class="embed-responsive-item" id="trailer-video" width="560" height="315" src="https://www.youtube.com/embed/' + youtubeId + '?enablejsapi=1" frameborder="0" allowfullscreen></iframe>');
+
+            $(".modal-body").html($video);
+
+            var $link = $("<a/>")
+                .attr("id", "open-trailer")
+                .html("View trailer");
+
+            var $link = $("<a>",{
+                text: "View Trailer",
+                href: "#",
+                id: "view-trailer",
+                click: function(event) {
+                    event.preventDefault();
+                    $("#trailerModal").modal("show");
+                }
+            });
+
+            $display_element.append($link);
+        }
+
+    }).error(function() {
+        console.log("Error");
+    });
+};
+
+
+
+var getMoviePoster = function(form, $display_element) {
+    var query = $(form + ' input[type="search"]').val();
+
+    $.ajax( "https://api.themoviedb.org/3/search/movie", {
+        data: {
+            query: query,
+            api_key: "fc7cf7c679f751e0b10ce587e82005d3"
+        }
+    }).done(function(info) {
+        console.log(info);
+
+        $display_element.empty();
+
+        if (info["total_results"] !== 0) {
+            var movieId = info["results"][0]["id"];
+
+            var t = info["results"][0]["title"];
+            var imgPath = "";
+
+            if (info["results"][0]["poster_path"]) {
+                imgPath = "http://image.tmdb.org/t/p/w300" + info["results"][0]["poster_path"];
+            }
+            else {
+                imgPath = "<%= image_path('noposter.jpg', html: {:width => 300}) %>";
+            }
+
+            var $title = $("<h2/>")
+                .html(t);
+
+            var $poster = $("<img/>")
+                .attr("src", imgPath)
+                .attr("id", "movie-poster")
+                .css("border", "0.33em ridge #FFD700");
+
+            $display_element.append($title).append($poster);
+
+            movieTrailer($display_element, movieId);
+        }
+        else {
+            $display_element.html("<h2>No movies matching " + query + "</h2>");
+        }
+
+    }).error(function() {
+        console.log("Error");
+    });
+};
+
+var getMovieInfo = function(form, $display_element, event) {
+    event.preventDefault();
+    getMoviePoster(form, $display_element);
+}
+
+
+$(document).ready(function() {
+
+    var bg = prevBg = setBackgroundImage();
+    $("#backgroundfade").css("background-image", bg);
+
+    setTimeout(function() {
+        $("#backgroundfade").fadeOut(500);
+    }, 4500);
+
+    setInterval(function() {
+        var bg = setBackgroundImage();
+        $("#backgroundfade").fadeIn(500);
+        $("#backgroundfade").css("background-image", bg);
+
+        setTimeout(function() {
+            $("#backgroundfade").fadeOut(500);
+        }, 4500);
+    }, 5000)
+
+    $("form").on( "submit", function(event) {
+        if ( $("#movie-title").val().trim() ) {
+            getMovieInfo("#movie-search-form", $("#result"), event);
+        }
+        else {
+            $("#result").empty();
+            $("#movie-title").val("");
+            event.preventDefault();
+        }
+    });
+
+    $('#trailerModal').on('hidden.bs.modal', function() {
+        var iframe = document.getElementById("trailer-video").contentWindow;
+        iframe.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+    });
+
+
+
+});

@@ -1,0 +1,11 @@
+<h2>Magic 8Ball!</h2>
+<h3>Ask it a question then click on the 8ball to get a response</h3>
+
+<form id="eightball">
+    <p><label for="question">Question: </label> <input type="text" id="question" name="question"></p>
+    <button><img src="/assets/magic8ball.gif"/></button>
+</form>
+
+<% if params[:question] && @answer %>
+    <div id="eightball_response"><h2><%= @answer %></h2></div>
+<% end %>

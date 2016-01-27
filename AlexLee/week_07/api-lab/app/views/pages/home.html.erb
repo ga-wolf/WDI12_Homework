@@ -1,0 +1,24 @@
+<div id="trailerModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span id="close" aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="movie-box col-sm-8 col-md-6 center-block">
+
+    <%= form_tag("/", :id => "movie-search-form") do %>
+
+        <%= search_field_tag("search", nil, :id => "movie-title", :class => "col-xs-8", :placeholder => "Movie Title") %>
+        <%= submit_tag("Get Movie", :id => "get-poster", :class => "col-xs-4") %>
+
+    <% end %>
+
+    <div id="result"></div>
+</div>

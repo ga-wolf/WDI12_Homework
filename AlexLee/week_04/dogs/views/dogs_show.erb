@@ -1,0 +1,32 @@
+    
+    <h2><%= @dog['breed'] %></h2>
+
+    <div id="dream-bubble">
+        <% unless @dog["image"].nil? %>
+        <img src="<%= @dog["image"] %>" class="feature"/>
+
+        <% end %>
+        <div id="options">
+            <a href="/dogs/<%= @dog['id'] %>/delete">Delete</a> |
+            <a href="/dogs/<%= @dog['id'] %>/edit">Edit</a>
+        
+            <p>
+                <% if @previous_dog != 0 %>
+                <a href="/dogs/<%= @previous_dog %>"><< previous</a>
+                <% end %>
+                
+                <% if @previous_dog != 0 && @next_dog != 0 %>
+                |
+                <% end %>
+
+                <% if @next_dog != 0 %>
+                <a href="/dogs/<%= @next_dog %>">next >></a>
+                <% end %>
+
+                <br />
+                <a href="/dogs"><< back</a>
+            </p>
+        </div>
+    </div>
+   
+    

@@ -1,0 +1,78 @@
+var getOMDBPoster = function(form, $display_element, event) {
+    event.preventDefault();
+
+    var query = $(form + ' input[type="search"]').val();
+
+    $.ajax("http://omdbapi.com/", {
+        data: {
+            t: query
+        }
+    }).done(function(info) {
+
+        var posterImg = "";
+        if (info["Error"] || info["Poster"] === "N/A") {
+            posterImg = '/assets/noposter.jpg';
+        }
+        else {
+            posterImg = info["Poster"];
+        }
+
+        var $poster = $("<img>");
+        $poster.attr("id", "poster-img");
+        $poster.css({
+            height: "450px",
+            marginTop: "1em",
+            border: "0.33em ridge #FFD700"
+        });
+        $poster.attr("src", posterImg);
+        $display_element.html($poster);
+
+    });
+}
+
+var rand = function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var imgArray = ["batmanvsuperman.jpg", "civilwar.jpg", "deadpool.jpg", "independenceday.jpg", "kungfupanda3.jpg", "papaz.jpg"];
+
+// var image = "url(/assets/batman-logo/Batman-Logo.gif)";
+// image = image || "url( <%#= asset_path 'Batman-Logo.gif' %> )";
+
+var setBackgroundImage = function() {
+    var img = imgArray[rand( 0, (imgArray.length - 1) )];
+    return "url(/assets/" + img + ")";
+}
+
+var prevBg = "";
+
+$(document).ready(function() {
+    var bg = prevBg = setBackgroundImage();
+    $("#backgroundfade").css("background-image", bg);
+
+    setTimeout(function() {
+        $("#backgroundfade").fadeOut(500);
+    }, 4500);
+
+    setInterval(function() {
+        var bg = setBackgroundImage();
+        if ( bg !== prevBg ) {
+            $("#backgroundfade").fadeIn(500);
+            $("#backgroundfade").css("background-image", bg);
+        }
+        else {
+            prevBg = setBackgroundImage();
+            $("#backgroundfade").fadeIn(500);
+            $("#backgroundfade").css("background-image", prevBg);
+        }
+        
+
+        setTimeout(function() {
+            $("#backgroundfade").fadeOut(500);
+        }, 4500);
+    }, 5000)
+
+    $("form").on( "submit", function(event) {
+        getOMDBPoster("#movie-search-form", $("#result"), event);
+    });
+});

@@ -1,0 +1,27 @@
+<h1><%= @book.title %></h1>
+
+<%= image_tag(@book.cover_image, :class => "feature") %>
+
+<div class="bottom-bar">
+    <ul class="info">
+        <li>Title: <%= @book.title %></li>
+        <li>Author: <%= link_to(@book.author.name, @book.author) unless @book.author.nil?%></li>
+        <li>Genre: <%= @book.genre %></li>
+        <li>Publisher: <%= @book.publisher %></li>
+        <li>Publish Date: <%= @book.publish_date.strftime "%B, %Y" unless @book.publish_date.nil? %></li>
+        <li>Number of Pages: <%= @book.num_pages %></li>
+    </ul>
+
+    <div class="controls">
+        <%= link_to("Edit book", edit_book_path) %> |
+        <%= link_to("Delete book", @book, :method => :delete, :data => { :confirm => "Are you sure?"} ) %>
+    </div>
+</div>
+
+<% if @book.id != @first_book.id %>
+<a href="<%= book_path(@previous_book) unless @previous_book.nil? %>"><div class="previous"><</div></a>
+<% end %>
+
+<% if @book.id != @last_book.id %>
+<a href="<%= book_path(@next_book) unless @next_book.nil? %>"><div class="next">></div></a>
+<% end %>

@@ -1,0 +1,11 @@
+<div class="movie-box col-sm-8 col-md-6 center-block">
+
+    <%= form_tag("/", :id => "movie-search-form") do %>
+
+        <%= search_field_tag("search", nil, :id => "movie-title", :class => "col-xs-8", :placeholder => "Movie Title") %>
+        <%= submit_tag("Get Poster", :id => "get-poster", :class => "col-xs-4") %>
+
+    <% end %>
+
+    <div id="result"></div>
+</div>

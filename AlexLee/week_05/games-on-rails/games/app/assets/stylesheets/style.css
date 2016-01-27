@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+nav {
+    margin-bottom: 1em;
+}
+
+#eightball_response {
+    width: 117px;
+    height: 125px;
+    color: white;
+    text-align: center;
+    position: relative;
+    bottom: 315px;
+    left: 199px;
+    z-index: 99;
+}
+
+#eightball input[type=text] {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#eightball button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0)
+}

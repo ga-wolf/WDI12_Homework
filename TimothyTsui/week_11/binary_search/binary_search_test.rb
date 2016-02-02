@@ -87,4 +87,8 @@ class TestBinarySearch < Minitest::Test
     # skip
     assert_equal -1, binarySearch([1,3,5,7], 4)
   end
+
+  def test_example
+    assert_equal 3, binarySearch([4, 5, 7, 12, 45], 12)
+  end
 end
